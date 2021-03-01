@@ -25,30 +25,31 @@
                 </Items>
             </asp:Menu>
         </div>
-        <div style="height: 408px">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" CellPadding="5" Height="100%" HorizontalAlign="Left" Width="70%">
+                    
+            <div style="height: 372px; margin-top: 1px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" CellPadding="5" Height="68%" HorizontalAlign="Left" Width="70%" style="margin-top: 4px">
                 <Columns>
-                    <asp:CommandField EditText="Изменить" ShowDeleteButton="True" ShowEditButton="True" />
-                    <asp:BoundField DataField="Title" HeaderText="Название группы" ReadOnly="True" SortExpression="Title" />
-                    <asp:BoundField DataField="Course" HeaderText="Курс" SortExpression="Course" />
-                    <asp:BoundField DataField="Specialty" HeaderText="Специальность" SortExpression="Specialty" />
-                    <asp:BoundField DataField="Curator" HeaderText="Куратор" SortExpression="Curator" />
-                    <asp:BoundField DataField="Elder" HeaderText="Староста" SortExpression="Elder" />
+                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                    <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" SortExpression="Title" />
+                    <asp:BoundField DataField="Course" HeaderText="Course" SortExpression="Course" />
+                    <asp:BoundField DataField="Specialty" HeaderText="Specialty" SortExpression="Specialty" />
+                    <asp:BoundField DataField="Curator" HeaderText="Curator" SortExpression="Curator" />
+                    <asp:BoundField DataField="Elder" HeaderText="Elder" SortExpression="Elder" />
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />
             </asp:GridView>
-            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" CellPadding="5" DataKeyNames="Title" DataSourceID="SqlDataSource1" Height="80%" Width="25%" DefaultMode="Insert" HorizontalAlign="Right">
+            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" CellPadding="5" DataKeyNames="Title" DataSourceID="SqlDataSource1" Height="97%" Width="25%" DefaultMode="Insert" HorizontalAlign="Right" style="margin-top: 11px">
                 <Fields>
-                    <asp:BoundField DataField="Title" HeaderText="Название группы" ReadOnly="True" SortExpression="Title" />
-                    <asp:BoundField DataField="Course" HeaderText="Курс" SortExpression="Course" />
-                    <asp:BoundField DataField="Specialty" HeaderText="Специальность" SortExpression="Specialty" />
-                    <asp:BoundField DataField="Curator" HeaderText="Куратор" SortExpression="Curator" />
-                    <asp:BoundField DataField="Elder" HeaderText="Староста" SortExpression="Elder" />
+                    <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" SortExpression="Title" />
+                    <asp:BoundField DataField="Course" HeaderText="Course" SortExpression="Course" />
+                    <asp:BoundField DataField="Specialty" HeaderText="Specialty" SortExpression="Specialty" />
+                    <asp:BoundField DataField="Curator" HeaderText="Curator" SortExpression="Curator" />
+                    <asp:BoundField DataField="Elder" HeaderText="Elder" SortExpression="Elder" />
                     <asp:CommandField ShowInsertButton="True" />
                 </Fields>
                 <RowStyle HorizontalAlign="Center" />
             </asp:DetailsView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString4 %>" DeleteCommand="DELETE FROM [Groups] WHERE [Title] = @original_Title AND [Course] = @original_Course AND [Specialty] = @original_Specialty AND [Curator] = @original_Curator AND [Elder] = @original_Elder" InsertCommand="INSERT INTO [Groups] ([Title], [Course], [Specialty], [Curator], [Elder]) VALUES (@Title, @Course, @Specialty, @Curator, @Elder)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Groups]" UpdateCommand="UPDATE [Groups] SET [Course] = @Course, [Specialty] = @Specialty, [Curator] = @Curator, [Elder] = @Elder WHERE [Title] = @original_Title AND [Course] = @original_Course AND [Specialty] = @original_Specialty AND [Curator] = @original_Curator AND [Elder] = @original_Elder">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" DeleteCommand="DELETE FROM [Groups] WHERE [Title] = @original_Title AND [Course] = @original_Course AND [Specialty] = @original_Specialty AND [Curator] = @original_Curator AND [Elder] = @original_Elder" InsertCommand="INSERT INTO [Groups] ([Title], [Course], [Specialty], [Curator], [Elder]) VALUES (@Title, @Course, @Specialty, @Curator, @Elder)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Groups]" UpdateCommand="UPDATE [Groups] SET [Course] = @Course, [Specialty] = @Specialty, [Curator] = @Curator, [Elder] = @Elder WHERE [Title] = @original_Title AND [Course] = @original_Course AND [Specialty] = @original_Specialty AND [Curator] = @original_Curator AND [Elder] = @original_Elder">
                 <DeleteParameters>
                     <asp:Parameter Name="original_Title" Type="String" />
                     <asp:Parameter Name="original_Course" Type="Int32" />
@@ -75,6 +76,28 @@
                     <asp:Parameter Name="original_Elder" Type="String" />
                 </UpdateParameters>
             </asp:SqlDataSource>
+               </div>
+        <div style="height: 235px">
+            <div style="height: 227px">
+                <asp:TextBox ID="TextBox1" runat="server" Width="112px"></asp:TextBox>
+                <asp:Button ID="Button1" runat="server" Text="Поиск" style="margin-left: 11px" Width="62px" />
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource2" Height="200px" Width="587px">
+                    <Columns>
+                        <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" SortExpression="Title" />
+                        <asp:BoundField DataField="Course" HeaderText="Course" SortExpression="Course" />
+                        <asp:BoundField DataField="Specialty" HeaderText="Specialty" SortExpression="Specialty" />
+                        <asp:BoundField DataField="Curator" HeaderText="Curator" SortExpression="Curator" />
+                        <asp:BoundField DataField="Elder" HeaderText="Elder" SortExpression="Elder" />
+                    </Columns>
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Groups] WHERE (([Course] = @Course) OR ([Curator] LIKE '%' + @Curator + '%') OR ([Specialty] LIKE '%' + @Specialty + '%'))">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="TextBox1" Name="Course" PropertyName="Text" />
+                        <asp:ControlParameter ControlID="TextBox1" Name="Curator" PropertyName="Text" />
+                        <asp:ControlParameter ControlID="TextBox1" Name="Specialty" PropertyName="Text" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </div>
         </div>
     </form>
 </body>

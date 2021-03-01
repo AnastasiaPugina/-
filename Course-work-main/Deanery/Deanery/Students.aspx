@@ -6,6 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        #form1 {
+            height: 124px;
+        }
+    </style>
 </head>
 <body style="height: 1234px">
     <form id="form1" runat="server">
@@ -25,9 +30,10 @@
                 </Items>
             </asp:Menu>
         </div>
-        <div style="height: 366px">
+        <div style="height: 539px">
 
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" DataKeyNames="Id_stud" AllowSorting="True" AllowPaging="True" CellPadding="5" Height="100%" HorizontalAlign="Left" Width="70%">
+            <div style="height: 581px">
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" DataKeyNames="Id_stud" AllowSorting="True" AllowPaging="True" CellPadding="5" Height="93%" HorizontalAlign="Left" Width="70%">
                 <Columns>
                     <asp:CommandField EditText="Изменить" ShowDeleteButton="True" ShowEditButton="True" />
                     <asp:BoundField DataField="Id_stud" HeaderText="ID студента" ReadOnly="True" SortExpression="Id_stud" />
@@ -39,7 +45,7 @@
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />
             </asp:GridView>
-            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" CellPadding="5" DataKeyNames="Id_stud" DataSourceID="SqlDataSource1" DefaultMode="Insert" Height="100%" Width="25%" OnPageIndexChanging="DetailsView1_PageIndexChanging" HorizontalAlign="Right">
+            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" CellPadding="5" DataKeyNames="Id_stud" DataSourceID="SqlDataSource1" DefaultMode="Insert" Height="99%" Width="25%" OnPageIndexChanging="DetailsView1_PageIndexChanging" HorizontalAlign="Right">
                 <Fields>
                     <asp:BoundField DataField="Id_stud" HeaderText="ID студента" ReadOnly="True" SortExpression="Id_stud" />
                     <asp:BoundField DataField="FIO" HeaderText="ФИО студента" SortExpression="FIO" />
@@ -51,7 +57,7 @@
                 </Fields>
                 <RowStyle HorizontalAlign="Center" />
             </asp:DetailsView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString2 %>" SelectCommand="SELECT * FROM [Students]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Students] WHERE [Id_stud] = @original_Id_stud AND [FIO] = @original_FIO AND [Title] = @original_Title AND [Addres] = @original_Addres AND [Tel] = @original_Tel AND [Date_birth] = @original_Date_birth" InsertCommand="INSERT INTO [Students] ([Id_stud], [FIO], [Title], [Addres], [Tel], [Date_birth]) VALUES (@Id_stud, @FIO, @Title, @Addres, @Tel, @Date_birth)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [Students] SET [FIO] = @FIO, [Title] = @Title, [Addres] = @Addres, [Tel] = @Tel, [Date_birth] = @Date_birth WHERE [Id_stud] = @original_Id_stud AND [FIO] = @original_FIO AND [Title] = @original_Title AND [Addres] = @original_Addres AND [Tel] = @original_Tel AND [Date_birth] = @original_Date_birth">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Students]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Students] WHERE [Id_stud] = @original_Id_stud AND [FIO] = @original_FIO AND [Title] = @original_Title AND [Addres] = @original_Addres AND [Tel] = @original_Tel AND [Date_birth] = @original_Date_birth" InsertCommand="INSERT INTO [Students] ([Id_stud], [FIO], [Title], [Addres], [Tel], [Date_birth]) VALUES (@Id_stud, @FIO, @Title, @Addres, @Tel, @Date_birth)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [Students] SET [FIO] = @FIO, [Title] = @Title, [Addres] = @Addres, [Tel] = @Tel, [Date_birth] = @Date_birth WHERE [Id_stud] = @original_Id_stud AND [FIO] = @original_FIO AND [Title] = @original_Title AND [Addres] = @original_Addres AND [Tel] = @original_Tel AND [Date_birth] = @original_Date_birth">
                 <DeleteParameters>
                     <asp:Parameter Name="original_Id_stud" Type="Int32" />
                     <asp:Parameter Name="original_FIO" Type="String" />
@@ -82,9 +88,28 @@
                     <asp:Parameter Name="original_Date_birth" Type="DateTime" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-
-        </div>
-        <br/>
+            </div>
+            <div style="height: 287px">
+                <asp:TextBox ID="TextBox1" runat="server" Width="138px" style="margin-top: 15px"></asp:TextBox>
+                <asp:Button ID="Button1" runat="server" Text="Поиск" Width="64px" style="margin-left: 9px" />
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="5" DataKeyNames="Id_stud" DataSourceID="SqlDataSource2" Height="100%" Width="70%" style="margin-top: 15px">
+                    <Columns>
+                        <asp:BoundField DataField="Id_stud" HeaderText="Id_stud" ReadOnly="True" SortExpression="Id_stud" />
+                        <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
+                        <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
+                        <asp:BoundField DataField="Addres" HeaderText="Addres" SortExpression="Addres" />
+                        <asp:BoundField DataField="Tel" HeaderText="Tel" SortExpression="Tel" />
+                        <asp:BoundField DataField="Date_birth" HeaderText="Date_birth" SortExpression="Date_birth" />
+                    </Columns>
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Students] WHERE (([FIO] LIKE '%' + @FIO + '%') OR ([Title] LIKE '%' + @Title + '%'))">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="TextBox1" Name="FIO" PropertyName="Text" />
+                        <asp:ControlParameter ControlID="TextBox1" Name="Title" PropertyName="Text" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </div>
+        </div>        
     </form>
 </body>
 </html>
