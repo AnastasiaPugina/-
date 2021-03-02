@@ -95,9 +95,10 @@
                 </div>
          <div style="height: 236px">
             <div style="height: 227px">
-                <asp:TextBox ID="TextBox1" runat="server" style="margin-top: 10px" Width="125px"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Введите название группы:"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" style="margin-top: 0px; margin-left: 18px;" Width="125px"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Поиск" Width="68px" />
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_plan" DataSourceID="SqlDataSource2" Height="193px" Width="589px" style="margin-top: 8px">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_plan" DataSourceID="SqlDataSource2" Height="193px" Width="589px" style="margin-top: 10px" HorizontalAlign="Center">
                     <Columns>
                         <asp:BoundField DataField="Id_plan" HeaderText="Id_plan" ReadOnly="True" SortExpression="Id_plan" />
                         <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
@@ -108,12 +109,11 @@
                         <asp:CheckBoxField DataField="Course_work" HeaderText="Course_work" SortExpression="Course_work" />
                         <asp:CheckBoxField DataField="Course_project" HeaderText="Course_project" SortExpression="Course_project" />
                     </Columns>
+                    <RowStyle HorizontalAlign="Center" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Curriculum] WHERE (([Title] LIKE '%' + @Title + '%') OR ([Id_sub] = @Id_sub) OR ([Semester] = @Semester))">
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Curriculum] WHERE (([Title] LIKE '%' + @Title + '%'))">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="TextBox1" Name="Title" PropertyName="Text" />
-                        <asp:ControlParameter ControlID="TextBox1" Name="Id_sub" PropertyName="Text" />
-                        <asp:ControlParameter ControlID="TextBox1" Name="Semester" PropertyName="Text" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </div>

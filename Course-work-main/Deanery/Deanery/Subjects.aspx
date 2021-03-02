@@ -66,14 +66,16 @@
           </div>
          <div style="height: 430px">
             <div style="height: 258px">
-                <asp:TextBox ID="TextBox1" runat="server" Height="17px" style="margin-top: 14px" Width="119px"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Введите название предмета или ФИО преподавателя:"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" Height="17px" style="margin-top: 0px; margin-left: 18px;" Width="119px"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Поиск" style="margin-left: 7px" Width="69px" />
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_sub" DataSourceID="SqlDataSource2" Height="100%" style="margin-top: 16px" Width="70%">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_sub" DataSourceID="SqlDataSource2" Height="100%" style="margin-top: 10px" Width="70%" HorizontalAlign="Center">
                     <Columns>
                         <asp:BoundField DataField="Title_sub" HeaderText="Title_sub" SortExpression="Title_sub" />
                         <asp:BoundField DataField="Id_sub" HeaderText="Id_sub" ReadOnly="True" SortExpression="Id_sub" />
                         <asp:BoundField DataField="Professor" HeaderText="Professor" SortExpression="Professor" />
                     </Columns>
+                    <RowStyle HorizontalAlign="Center" />
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Subjects] WHERE (([Professor] LIKE '%' + @Professor + '%') OR ([Title_sub] LIKE '%' + @Title_sub + '%'))">
                     <SelectParameters>

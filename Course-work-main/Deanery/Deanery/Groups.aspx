@@ -78,10 +78,11 @@
             </asp:SqlDataSource>
                </div>
         <div style="height: 235px">
-            <div style="height: 227px">
-                <asp:TextBox ID="TextBox1" runat="server" Width="112px"></asp:TextBox>
+            <div style="height: 352px">
+                <asp:Label ID="Label1" runat="server" Text="Введите название предмета или ФИО куратора:"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" Width="112px" style="margin-left: 19px"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Поиск" style="margin-left: 11px" Width="62px" />
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource2" Height="200px" Width="587px">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource2" HorizontalAlign="Center" style="margin-left: 0px; margin-top: 11px">
                     <Columns>
                         <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" SortExpression="Title" />
                         <asp:BoundField DataField="Course" HeaderText="Course" SortExpression="Course" />
@@ -89,10 +90,10 @@
                         <asp:BoundField DataField="Curator" HeaderText="Curator" SortExpression="Curator" />
                         <asp:BoundField DataField="Elder" HeaderText="Elder" SortExpression="Elder" />
                     </Columns>
+                    <RowStyle HorizontalAlign="Center" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Groups] WHERE (([Course] = @Course) OR ([Curator] LIKE '%' + @Curator + '%') OR ([Specialty] LIKE '%' + @Specialty + '%'))">
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Groups] WHERE (([Curator] LIKE '%' + @Curator + '%') OR ([Specialty] LIKE '%' + @Specialty + '%'))">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="TextBox1" Name="Course" PropertyName="Text" />
                         <asp:ControlParameter ControlID="TextBox1" Name="Curator" PropertyName="Text" />
                         <asp:ControlParameter ControlID="TextBox1" Name="Specialty" PropertyName="Text" />
                     </SelectParameters>

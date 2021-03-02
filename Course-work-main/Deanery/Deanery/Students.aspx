@@ -1,9 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Students.aspx.cs" Inherits="Deanery.Students" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+﻿<head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
@@ -12,6 +7,7 @@
         }
     </style>
 </head>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <body style="height: 1234px">
     <form id="form1" runat="server">
         <div style="height: 130px">
@@ -30,7 +26,7 @@
                 </Items>
             </asp:Menu>
         </div>
-        <div style="height: 539px">
+        <div style="height: 576px">
 
             <div style="height: 581px">
             <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" DataKeyNames="Id_stud" AllowSorting="True" AllowPaging="True" CellPadding="5" Height="93%" HorizontalAlign="Left" Width="70%">
@@ -89,10 +85,11 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
             </div>
-            <div style="height: 287px">
-                <asp:TextBox ID="TextBox1" runat="server" Width="138px" style="margin-top: 15px"></asp:TextBox>
+            <div style="height: 284px">
+                <asp:Label ID="Label1" runat="server" Text="Введите ФИО студента, название группы:"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" Width="138px" style="margin-top: 0px; margin-left: 13px;"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Поиск" Width="64px" style="margin-left: 9px" />
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="5" DataKeyNames="Id_stud" DataSourceID="SqlDataSource2" Height="100%" Width="70%" style="margin-top: 15px">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="5" DataKeyNames="Id_stud" DataSourceID="SqlDataSource2" Height="100%" Width="70%" style="margin-top: 10px" HorizontalAlign="Center">
                     <Columns>
                         <asp:BoundField DataField="Id_stud" HeaderText="Id_stud" ReadOnly="True" SortExpression="Id_stud" />
                         <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
@@ -101,6 +98,7 @@
                         <asp:BoundField DataField="Tel" HeaderText="Tel" SortExpression="Tel" />
                         <asp:BoundField DataField="Date_birth" HeaderText="Date_birth" SortExpression="Date_birth" />
                     </Columns>
+                    <RowStyle HorizontalAlign="Center" />
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Students] WHERE (([FIO] LIKE '%' + @FIO + '%') OR ([Title] LIKE '%' + @Title + '%'))">
                     <SelectParameters>

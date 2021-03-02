@@ -79,9 +79,10 @@
 
         
             <div style="height: 204px">
-                <asp:TextBox ID="TextBox1" runat="server" Width="124px"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Введите код студента, код предемта, оценку или семестр:"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" Width="124px" style="margin-top: 0px; margin-left: 14px;"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Поиск" style="margin-left: 10px" Width="64px" />
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_stud,Id_sub" DataSourceID="SqlDataSource2" Height="100%" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Width="70%">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_stud,Id_sub" DataSourceID="SqlDataSource2" Height="100%" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Width="70%" style="margin-top: 10px" HorizontalAlign="Center">
                     <Columns>
                         <asp:BoundField DataField="Id_stud" HeaderText="Id_stud" ReadOnly="True" SortExpression="Id_stud" />
                         <asp:BoundField DataField="Id_sub" HeaderText="Id_sub" ReadOnly="True" SortExpression="Id_sub" />
@@ -89,6 +90,7 @@
                         <asp:BoundField DataField="Mark" HeaderText="Mark" SortExpression="Mark" />
                         <asp:BoundField DataField="Semester" HeaderText="Semester" SortExpression="Semester" />
                     </Columns>
+                    <RowStyle HorizontalAlign="Center" />
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_DeaneryConnectionString1 %>" SelectCommand="SELECT * FROM [Result_Session] WHERE (([Id_stud] = @Id_stud) OR ([Id_sub] = @Id_sub) OR ([Mark] = @Mark) OR ([Semester] = @Semester))">
                     <SelectParameters>
